@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img{
+            height: 200px;
+            width:200px;
+        }
+        #cont{
+            display:block;
+        }
+        #image1{
+            display:block;
+        }
+        #normal{
+            display: block;
+        }
+        #automatic{
+            display:block;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="cont">
+        <div id="image1"><img src="" alt=""></div>
+        </br>
+        <div id="normal">
+            <button id="prev"><</button>
+            <button id="next">></button>
+        </div>
+        </br>
+        <div id="automatic">
+            <button id="start" onclick="start()">start</button>
+            <button id="stop" onclick="stop()">stop</button>
+        </div>
+        
+    </div>
+</body>
+</html>
+<script>
+    let arr=["https://th.bing.com/th/id/OIP.-AUT00jk96jKoTkcLi0QIgHaIO?w=169&h=187&c=7&r=0&o=5&dpr=1.3&pid=1.7",
+"https://th.bing.com/th/id/OIP.djQgqTheHo3BGyMSL-AviAHaE6?w=283&h=187&c=7&r=0&o=5&dpr=1.3&pid=1.7",
+"https://i5.walmartimages.com/asr/ec27a2f7-6591-447b-8b0a-53010660f606_1.83a959f5b26fcfdff8daef7332786fd5.jpeg",
+"https://th.bing.com/th/id/OIP.apUzojsMIrSrVFKDz8rKTQHaEK?w=309&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
+"https://th.bing.com/th/id/OIP.tOeKyxH2NaqR8FcSjklW8gHaEj?w=284&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
+" https://i.pinimg.com/originals/39/37/2d/39372dd89d5f8bfec7b91fe9c45c7baa.jpg",
+"https://th.bing.com/th/id/OIP.f3qKd7DquZUgssO4o_FXXgHaEK?w=300&h=187&c=7&r=0&o=5&dpr=1.3&pid=1.7",
+"https://th.bing.com/th?q=PVC+Team+Roping+Dummy&w=120&h=120&c=1&rs=1&qlt=90&cb=1&dpr=1.3&pid=InlineBlock&mkt=en-IN&cc=IN&setlang=en&adlt=moderate&t=1&mw=247",
+"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDiA7Ij08p-jpCRRceZyQD2BE_wJZmOvRc5wkx6gKp53tEhy1bShfVZbVWWeGxopmQ49c&usqp=CAU",
+"https://th.bing.com/th/id/OIP.gnKQOaqqOvIH5FPbble0gwHaJ6?w=122&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
+"https://th.bing.com/th/id/OIP.tEkuRAQV7Av8MjaKHIqUkAHaFS?w=244&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
+"https://th.bing.com/th/id/OIP.tEkuRAQV7Av8MjaKHIqUkAHaFS?w=244&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
+"https://th.bing.com/th/id/OIP.zBJOUv8qECYu8394irS5fgHaGZ?w=192&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
+"https://tse1.mm.bing.net/th?&id=OVP.r-ORfz4uR1FjIqKMlJzfDgHgFo&w=335&h=187&c=7&pid=2.1&rs=1",
+"https://th.bing.com/th/id/OIP.uyZaP4oj5ahZXPlbOFTerQEgDY?w=240&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
+ "https://th.bing.com/th?q=Tie+Down+Roping+Bloopers&dc=3&w=100&h=100&c=1&rs=1&qlt=90&cb=1&dpr=1.3&pid=InlineBlock&mkt=en-IN&cc=IN&setlang=en&adlt=moderate&t=1&mw=247"]
+let image=document.querySelector("img")
+let prev=document.getElementById("prev")
+let next=document.getElementById("next")
+image.setAttribute('src',arr[0])
+let currentImage=0
+let id;
+prev.addEventListener('click',function(){
+    currentImage-=1
+    if (currentImage<0)
+    {
+        currentImage=arr.length-1
+    }
+    image.setAttribute('src',arr[currentImage])
+})
+next.addEventListener('click',function(){
+    currentImage+=1
+    if (currentImage>arr.length-1)
+    {
+        currentImage=0
+    }
+    image.setAttribute('src',arr[currentImage])
+})
+function start()
+{
+        id=setInterval(()=>{
+            image.setAttribute('src',arr[currentImage])
+            currentImage+=1
+        if (currentImage<0)
+        {
+            currentImage=arr.length-1
+        }
+        if (currentImage>arr.length-1)
+        {
+            currentImage=0
+        }
+
+        },1000)
+}
+function stop(){
+    clearInterval(id)
+}
+</script>
